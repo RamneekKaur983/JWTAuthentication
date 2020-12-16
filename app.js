@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const authRoutes = require('./routes/authRoutes');
+const taskRoutes = require('./routes/taskRoutes')
 const cookieParser = require('cookie-parser');
 
 
@@ -12,7 +13,8 @@ app.use(cookieParser());
 
 
 mongoose.connect('mongodb+srv://Ramneek:iamunique@cluster0.cyzml.mongodb.net/JWT', {useNewUrlParser: true , useUnifiedTopology: true});
-app.use(authRoutes);
+app.use(authRoutes)
+app.use(taskRoutes)
 
 const PORT = process.env.PORT || 3000;
 
