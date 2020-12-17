@@ -28,13 +28,14 @@ module.exports.delete_task = async (req, res) =>
         try{
 
            const task= await Task.deleteOne({content:req.body.content})
-           if(task.deletedCount==0)
+           if(task)
            {
-            res.end( "Given Task Does Not Exsist: \n" + JSON.stringify(task, null, 4));
+            res.end( "Deleted Task: \n" + JSON.stringify(task, null, 4));
            }
            else
            {
-            res.end( "Deleted customer: \n" + JSON.stringify(task, null, 4));
+            res.end( "Given Task Does Not Exsist: \n" + JSON.stringify(task, null, 4));
+       
            }
             
 
@@ -57,7 +58,7 @@ module.exports.update_task = async(req, res) =>
      }
      else
      {
-        res.end("Don't Exist Customer:\n:" + JSON.stringify(task, null, 4));
+        res.end("Task Doesn't Exsist:\n:" + JSON.stringify(task, null, 4));
      }
      
     }
